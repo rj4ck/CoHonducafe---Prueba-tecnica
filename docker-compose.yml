@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  database:
+    image: mcr.microsoft.com/azure-sql-edge
+    container_name: sql
+    environment:
+      - ACCEPT_EULA=1
+      - MSSQL_SA_PASSWORD=MyPass@word
+      - MSSQL_PID=Developer
+      - MSSQL_USER=SA
+    ports:
+      - "1433:1433"  # Exponer el puerto 1433 del contenedor
+    restart: always  # Reiniciar siempre en caso de fallo o reinicio

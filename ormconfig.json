@@ -1,0 +1,14 @@
+{
+  "type": "mssql",
+  "host": "db",
+  "port": 1433,
+  "username": "sa",
+  "password": "MyPass@word",
+  "database": "proveedor_db",
+  "entities": ["src/entities/*.ts"],
+  "migrations": ["src/migration/*.ts"],
+  "cli": {
+    "migrationsDir": "src/migration"
+  },
+  "synchronize": false
+}
