@@ -1,10 +1,10 @@
+import {config} from "nodemon";
+
 require('dotenv').config();
 
 import 'reflect-metadata';
-import * as express from 'express';
 
 import { envs } from "./config";
-import { createConnection } from 'typeorm';
 import { Server } from "./presentation/server";
 import { AppRoutes } from "./presentation/routes";
 import { AppDataSource, ensureDatabaseExists } from "./data-source";

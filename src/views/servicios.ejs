@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Gestión de Servicios</title>
+
+    <script>
+      async function loadServicios() {
+        try {
+          const response = await fetch('/api/servicios');
+          const servicios = await response.json();
+          const tableBody = document.getElementById('servicios-body');
+          tableBody.innerHTML = '';
+
+          servicios.forEach(servicio => {
+            const row = `<tr>
+            <td>${servicio.id}</td>
+            <td>${servicio.nombre}</td>
+          </tr>`;
+            tableBody.innerHTML += row;
+          });
+        } catch (error) {
+          console.error('Error al cargar servicios:', error);
+        }
+      }
+
+      window.onload = loadServicios;
+    </script>
+</head>
+<body>
+<div class="container">
+    <nav>
+        <a href="/">Gestión de Proveedores</a>
+<!--        <a href="/servicios">Gestión de Servicios</a>-->
+    </nav>
+
+    <h1>Gestión de Servicios</h1>
+
+    <form action="/api/servicios" method="POST">
+        <label for="nombre">Nombre del Servicio:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <button type="submit">Agregar Servicio</button>
+    </form>
+
+    <hr/>
+    <h1>Lista de Servicios</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre del Servicio</th>
+        </tr>
+        </thead>
+        <tbody id="servicios-body">
+        <!-- Los datos se cargarán aquí mediante fetch -->
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

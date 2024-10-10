@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Lista de Proveedores</title>
+
+    <script>
+      async function loadProveedores() {
+        try {
+          const response = await fetch('/api/proveedores');
+          const proveedores = await response.json();
+          const tableBody = document.getElementById('proveedores-body');
+          tableBody.innerHTML = '';
+
+          proveedores.forEach(proveedor => {
+            const row = `<tr>
+            <td>${proveedor.id}</td>
+            <td>${proveedor.identidad}</td>
+            <td>${proveedor.rtn}</td>
+            <td>${proveedor.nombre}</td>
+            <td>${proveedor.correo}</td>
+            <td>${proveedor.telefono}</td>
+            <td>${proveedor.servicio?.nombre || 'Sin servicio'}</td>
+          </tr>`;
+            tableBody.innerHTML += row;
+          });
+        } catch (error) {
+          console.error('Error al cargar proveedores:', error);
+        }
+      }
+
+      window.onload = loadProveedores;
+    </script>
+</head>
+<body>
+<div class="container">
+    <nav>
+<!--        <a href="/">Gestión de Proveedores</a>-->
+        <a href="/servicios">Gestión de Servicios</a>
+    </nav>
+
+    <h1>Gestión de Proveedores</h1>
+
+    <form action="/api/proveedores" method="POST">
+        <label for="identidad">Identidad:</label>
+        <input type="text" id="identidad" name="identidad" required>
+
+        <label for="rtn">RTN:</label>
+        <input type="text" id="rtn" name="rtn" required>
+
+        <label for="nombre">Nombre del Proveedor:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="departamento">Departamento:</label>
+        <input type="text" id="departamento" name="departamento" required>
+
+        <label for="municipio">Municipio:</label>
+        <input type="text" id="municipio" name="municipio" required>
+
+        <label for="zonaCobertura">Zona de cobertura:</label>
+        <select id="zonaCobertura" name="zonaCobertura" required>
+            <option value="Norte">Norte</option>
+            <option value="Sur">Sur</option>
+            <option value="Centro">Centro</option>
+            <option value="Occidente">Occidente</option>
+        </select>
+
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" required>
+
+        <label for="servicio">Servicio Proporcionado:</label>
+        <select id="servicio" name="servicio" required>
+            <% servicios.forEach(servicio => { %>
+                <option value="<%= servicio.id %>"><%= servicio.nombre %></option>
+            <% }) %>
+        </select>
+
+        <button type="submit">Agregar Proveedor</button>
+    </form>
+
+    <hr/>
+
+    <h1>Lista de Proveedores</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Identidad</th>
+            <th>RTN</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Servicio Proporcionado</th>
+        </tr>
+        </thead>
+        <tbody id="proveedores-body"></tbody>
+    </table>
+</div>
+</body>
+</html>

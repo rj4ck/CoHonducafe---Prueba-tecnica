@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+
 import { Proveedor } from './proveedor.entity';
 
 @Entity()

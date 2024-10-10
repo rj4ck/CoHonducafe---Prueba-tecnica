@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { AppDataSource } from '../../data-source';  // Importa el DataSource
 
+import { AppDataSource } from '../../data-source';
 import { Proveedor } from '../../entities/proveedor.entity';
 
 export class ProveedorController {
@@ -21,7 +21,7 @@ export class ProveedorController {
     const proveedorRepo = AppDataSource.getRepository(Proveedor);
 
     try {
-      const proveedores = await proveedorRepo.find({});
+      const proveedores = await proveedorRepo.find({ relations: ['servicio'] });
 
       res.json(proveedores);
     } catch (error) {

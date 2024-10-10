@@ -9,8 +9,8 @@ export class ServiciosRoutes {
 
     const controller = new ProveedorService();
 
-    //router.get('/', controller.getAll);
-    //router.post('/', controller.create);
+    router.get('/', controller.getAll);
+    router.post('/', controller.create);
 
     return router;
   }

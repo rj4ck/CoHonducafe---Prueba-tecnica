@@ -4,12 +4,12 @@ import { DataSource } from 'typeorm';
 import { envs } from "./config";
 
 const config = {
-  user: envs.DB_USERNAME || 'sa',     // Usuario SA o tu propio usuario
-  password: envs.DB_PASSWORD || 'MyPass@word', // Contraseña
-  server: envs.DB_HOST || 'localhost', // Servidor de la base de datos
-  port: envs.DB_PORT|| 1433, // Puerto de SQL Server
+  user: envs.DB_USERNAME || 'sa',
+  password: envs.DB_PASSWORD || 'MyPass@word',
+  server: envs.DB_HOST || 'localhost',
+  port: envs.DB_PORT|| 1433,
   options: {
-    encrypt: false,   // Encriptación (desactivada para entornos locales)
+    encrypt: false,
     enableArithAbort: true,
   }
 };
