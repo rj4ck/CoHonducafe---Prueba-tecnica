@@ -31,6 +31,10 @@
         }
       }
 
+      function exportarProveedores() {
+        window.location.href = '/api/reports/proveedores';
+      }
+
       window.onload = loadProveedores;
     </script>
 </head>
@@ -40,6 +44,8 @@
 <!--        <a href="/">Gestión de Proveedores</a>-->
         <a href="/servicios">Gestión de Servicios</a>
     </nav>
+
+
 
     <h1>Gestión de Proveedores</h1>
 
@@ -101,6 +107,8 @@
         </thead>
         <tbody id="proveedores-body"></tbody>
     </table>
+
+    <button onclick="exportarProveedores()">Exportar a Excel</button>
 </div>
 </body>
 </html>

@@ -4,6 +4,6 @@ import { ReportController } from './controller';
 const router = Router();
 const reportController = new ReportController();
 
-router.get('/report/excel', reportController.exportExcel);
+router.get('/proveedores', reportController.exportExcel);
 
 export default router;
