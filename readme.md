@@ -75,13 +75,19 @@ Esto arrancará el servidor en el puerto 1337. Puedes verificar que el servidor 
 ## 7. Rutas disponibles
 Una vez que el servidor está corriendo, puedes interactuar con las rutas definidas en la aplicación.
 
-Proveedores: Para ver y agregar proveedores, la ruta principal es:
-
+### RestApi
 ```bash
 http://localhost:3000/api/proveedores
+http://localhost:3000/api/servicios
+http://localhost:3000/api/reports/proveedores
 ```
 
-Aquí podrás realizar operaciones CRUD para los proveedores.
+### Vistas
+Aquí podrás interactuar visualmente con la aplicación y navegar entre las vistas de Proveedores y Servicio
+```bash
+http://localhost:3000/
+http://localhost:3000/servicios
+```
 
 ## 8. Detener los servicios
 Si necesitas detener los contenedores de Docker, puedes usar el siguiente comando:
@@ -96,9 +102,3 @@ Esto detendrá y eliminará el contenedor de SQL Server.
 Configuración de la base de datos: Las credenciales y detalles de la base de datos están configurados en el archivo src/data-source.ts. Si necesitas cambiar el nombre de la base de datos, usuario o contraseña, asegúrate de actualizarlos en ese archivo.
 
 Variables de entorno: Puedes usar un archivo .env para configurar los detalles del entorno, como las credenciales de SQL Server.
-
-
-
-
-
-
